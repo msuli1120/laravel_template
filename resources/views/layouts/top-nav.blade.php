@@ -4,7 +4,7 @@
 			<a class="uk-navbar-item uk-logo" href="/">{{ config('app.name', 'XingApps') }}</a>
 			<li>
 				<a class="uk-icon-link uk-hidden@s uk-flex uk-flex-middle" uk-icon="menu"></a>
-				<div class="uk-navbar-dropdown" uk-drop="boundary: !nav; boundary-align: true; pos: bottom-justify;">
+				<div class="uk-navbar-dropdown" uk-drop="boundary: !nav; boundary-align: true; pos: bottom-justify; offset: 0">
 					<ul class="uk-nav uk-navbar-dropdown-nav">
 						<li class="uk-nav-header"><a href="">Home</a></li>
 						@auth
@@ -18,7 +18,7 @@
 		</ul>
 		<ul class="uk-navbar-nav uk-visible@s">
 			<li>
-				<a href="/">Home</a>
+				<a href="/" class="">Home</a>
 			</li>
 			@auth
 				<li>
