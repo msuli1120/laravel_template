@@ -1,0 +1,30 @@
+nav.uk-navbar-container.uk-navbar {
+  background-color: indigo;
+}
+
+.uk-navbar-nav li a {
+  color: white;
+}
+
+.uk-navbar-nav li a:hover {
+  color: deeppink;
+}
+
+.uk-navbar-left a.uk-navbar-item.uk-logo {
+  color: white;
+  font-family: 'Raleway', sans-serif;
+}
+
+.uk-navbar-left ul.uk-flex.uk-navbar-nav li div.uk-navbar-dropdown{
+  background-color: indigo;
+}
+
+.uk-margin.uk-animation-toggle a.uk-link {
+  float: right;
+}
+
+@media only screen and (max-width: 369px) {
+  .uk-margin.uk-animation-toggle a.uk-link {
+    display: block;
+  }
+}
