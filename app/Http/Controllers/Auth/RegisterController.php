@@ -2,16 +2,16 @@
 
 	namespace App\Http\Controllers\Auth;
 
-	use App\Mail\VerifyEmail;
 	use App\User;
-	use App\Http\Controllers\Controller;
-	use Illuminate\Http\Request;
-	use Illuminate\Support\Facades\Hash;
-	use Mail;
 	use Validator;
-	use Illuminate\Foundation\Auth\RegistersUsers;
+	use Carbon\Carbon;
 	use Illuminate\Support\Str;
+	use Illuminate\Http\Request;
+	use App\Jobs\SendVerifyEmailJob;
+	use Illuminate\Support\Facades\Hash;
+	use App\Http\Controllers\Controller;
 	use Illuminate\Auth\Events\Registered;
+	use Illuminate\Foundation\Auth\RegistersUsers;
 
 	class RegisterController extends Controller
 	{
@@ -90,13 +90,9 @@
 			}
 
 			$toUser = User::findOrFail($user->id);
-			$this->sendVerifyEmail($toUser);
+			$sendVerifyEmailJob = (new SendVerifyEmailJob($toUser))->delay(Carbon::now()->addSecond(30));
+			dispatch($sendVerifyEmailJob);
 			return $user;
-		}
-
-		private function sendVerifyEmail($user)
-		{
-			Mail::to($user['email'])->send(new VerifyEmail($user));
 		}
 
 		public function emailVerified($email, $verifyToken)
