@@ -48,7 +48,7 @@
 
 			event(new Registered($user = $this->create($request->all())));
 			
-			$request->session()->flash('success', 'Please verify your email first!');
+			$request->session()->flash('success', 'We have sent you a verification email. Please verify your email!');
 			return view('welcome');
 		}
 

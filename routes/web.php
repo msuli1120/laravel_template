@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', 'PageController@welcome');
 Route::get('about', 'PageController@about')->name('about');
 Route::get('contact', 'PageController@contact')->name('contact');
@@ -20,4 +9,5 @@ Route::get('verify/{email}/{verifyToken}','Auth\RegisterController@emailVerified
 Auth::routes();
 
 Route::get('profile', 'ProfileController@index')->name('profile');
-
+Route::get('edit-profile', 'ProfileController@editProfile')->name('edit.profile');
+Route::post('update-profile', 'ProfileController@updateProfile')->name('update.profile');

@@ -40,7 +40,7 @@ nav.uk-navbar-container.uk-navbar {
 #login-form div.uk-first-column,
 #register-form div.uk-first-column {
   position: fixed;
-  top: 40%;
+  top: 33%;
   left: 50%;
   width: 25em;
   height: 18em;
@@ -53,6 +53,16 @@ nav.uk-navbar-container.uk-navbar {
   top: 30%;
   left: 50%;
   width: 30em;
+  height: 18em;
+  margin-top: -9em;
+  margin-left: -15em;
+}
+
+#profile-card div.uk-first-column {
+  position: fixed;
+  top: 33%;
+  left: 50%;
+  width: 25em;
   height: 18em;
   margin-top: -9em;
   margin-left: -15em;

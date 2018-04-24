@@ -32,7 +32,7 @@
 						</div>
 						<div class="uk-margin uk-animation-toggle">
 							<button type="submit" class="uk-button uk-button-primary uk-animation-scale-up">Log in</button>
-							<a class="uk-link" href="{{ route('password.request') }}">
+							<a class="uk-link uk-margin-small-top" href="{{ route('password.request') }}">
 								Forgot Your Password?
 							</a>
 						</div>

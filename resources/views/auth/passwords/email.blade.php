@@ -27,7 +27,6 @@
 								@endif
 							</div>
 						</div>
-						{!! NoCaptcha::renderJs() !!}
 						{!! NoCaptcha::display(['data-theme' => 'dark']) !!}
 						@if ($errors->has('g-recaptcha-response'))
 							<span class="invalid-feedback">
@@ -43,3 +42,4 @@
 		</div>
 	</div>
 @endsection
+
