@@ -2,10 +2,10 @@
 
 	namespace App\Http\Controllers\Auth;
 
-	use Mail;
+	use App\Jobs\SendVerifyEmailJob;
 	use App\User;
+	use Carbon\Carbon;
 	use Validator;
-	use App\Mail\VerifyEmail;
 	use Illuminate\Support\Str;
 	use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\Hash;
@@ -90,13 +90,10 @@
 			}
 
 			$toUser = User::findOrFail($user->id);
-			$this->sendVerifyEmail($toUser);
+			$sendVerifyEmailJob = (new SendVerifyEmailJob($toUser))
+				->delay(Carbon::now()->addSecond(3));
+			dispatch($sendVerifyEmailJob);
 			return $user;
-		}
-
-		private function sendVerifyEmail($user)
-		{
-			Mail::to($user['email'])->send(new VerifyEmail($user));
 		}
 
 		public function emailVerified($email, $verifyToken)
@@ -104,7 +101,7 @@
 			$user = User::where(['email' => $email, 'verifyToken' => $verifyToken])->first();
 			if ($user) {
 				User::where(['email' => $email, 'verifyToken' => $verifyToken])->update(['status' => 1, 'verifyToken' => null]);
-				\Session::flash('success', "Your email has been verified");
+				\Session::flash('success', 'Your email has been verified');
 				return redirect('/');
 			} else {
 				\Session::flash('error', 'User not found!');

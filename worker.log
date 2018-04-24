@@ -1,0 +1,4 @@
+[2018-04-24 18:16:02][1] Processing: App\Jobs\SendVerifyEmailJob
+[2018-04-24 18:16:04][1] Processed:  App\Jobs\SendVerifyEmailJob
+[2018-04-24 18:17:12][2] Processing: App\Jobs\SendVerifyEmailJob
+[2018-04-24 18:17:13][2] Processed:  App\Jobs\SendVerifyEmailJob
